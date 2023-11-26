@@ -1,0 +1,17 @@
+{
+  "name": "wdio-orangehrm",
+  "type": "module",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.21.0",
+    "@wdio/cli": "^8.22.1",
+    "@wdio/cucumber-framework": "^8.22.0",
+    "@wdio/local-runner": "^8.22.1",
+    "@wdio/spec-reporter": "^8.21.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "wdio": "wdio run ./wdio.conf.ts",
+    "allure": "allure generate allure-results/ --clean && allure open"
+  }
+}
