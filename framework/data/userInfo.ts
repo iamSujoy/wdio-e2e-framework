@@ -1,8 +1,8 @@
 const User = {
     username: "Admin",
     password: "admin123",
-    firstName: "Dannyyyy",
-    lastName: "Smithhhh",
+    firstName: "John",
+    lastName: "Smith",
     employeeId: "EP12345",
     nationality: "IN"
 }

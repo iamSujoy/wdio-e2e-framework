@@ -49,33 +49,30 @@ class MyInfoPage extends Page {
         }
     }
 
-    public async updateEmployeeId(employeeId: string): Promise<boolean> {
+    public async updateEmployeeId(employeeId: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.employeeIdInput, employeeId)
-            return true
+            return await ElementUtils.setValue(this.employeeIdInput, employeeId)
         } catch (error) {
             console.log(error)
-            return false
+            return undefined
         }
     }
 
-    public async updateLastName(lastName: string): Promise<boolean> {
+    public async updateLastName(lastName: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.lastNameInput, lastName)
-            return true
+            return await ElementUtils.setValue(this.lastNameInput, lastName)
         } catch (error) {
             console.log(error)
-            return false
+            return undefined
         }
     }
 
-    public async updateFirstName(firstName: string): Promise<boolean> {
+    public async updateFirstName(firstName: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.firstNameInput, firstName)
-            return true
+            return await ElementUtils.setValue(this.firstNameInput, firstName)
         } catch (error) {
             console.log(error)
-            return false
+            return undefined
         }
     }
 

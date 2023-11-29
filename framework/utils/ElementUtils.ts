@@ -1,25 +1,40 @@
 import { WaitOptions } from "../types/types";
+import { browser } from '@wdio/globals'
+import { Key } from 'webdriverio'
 
 export default class ElementUtils {
 
     static async getText(element: Promise<WebdriverIO.Element>): Promise<string> {
-        return (await element).getText();
+        return await (await element).getText();
     }
 
-    static async setValue(element: Promise<WebdriverIO.Element>, value: string | number): Promise<void> {
-        (await element).setValue(value)
+    static async getValue(element: Promise<WebdriverIO.Element>): Promise<string | number> {
+        return await (await element).getValue();
+    }
+
+    /**
+    * clear existing value manually, then set value and also return the value
+    * of that element
+    */
+    static async setValue(element: Promise<WebdriverIO.Element>, value: string | number): Promise<string | number> {
+        await this.click(element)
+        await browser.action('key')
+            .down(Key.Ctrl)
+            .down('a')
+            .down(Key.Backspace)
+            .up(Key.Backspace)
+            .up('a')
+            .up(Key.Ctrl)
+            .perform()
+        await (await element).setValue(value)
+        return await this.getValue(element)
     }
 
     static async click(element: Promise<WebdriverIO.Element>): Promise<void> {
-        (await element).click()
+        await (await element).click()
     }
 
     static async waitForElementToExist(element: Promise<WebdriverIO.Element>, options?: WaitOptions): Promise<void> {
-        if (!options) {
-            (await element).waitForExist()
-        } else {
-            (await element).waitForExist(options)
-        }
-
+        await (await element).waitForExist(options ?? undefined)
     }
 }
