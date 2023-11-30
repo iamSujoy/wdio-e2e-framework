@@ -40,5 +40,5 @@ jobs:
       - name: Archive Test results
         uses: actions/upload-artifact@v3
         with:
-          name: allure-result
-          path: allure-results/
+          name: allure-report
+          path: allure-report/
