@@ -1,5 +1,5 @@
 import { Given, When, Then } from '@wdio/cucumber-framework';
-import { expect, $ } from '@wdio/globals'
+import { expect } from '@wdio/globals'
 
 import loginPage from '../pages/login.page.js';
 import dashboardPage from '../pages/dashboard.page.js';
@@ -25,15 +25,15 @@ When(`User navigates to MyInfo page`, async () => {
 });
 
 When(`User updates First Name`, async () => {
-    await expect(await myinfoPage.updateFirstName(user.firstName)).toBeTruthy()
+    await expect(await myinfoPage.updateFirstName(user.firstName)).toEqual(user.firstName)
 });
 
 When(`User updates Last Name`, async () => {
-    await expect(await myinfoPage.updateLastName(user.lastName)).toBeTruthy()
+    await expect(await myinfoPage.updateLastName(user.lastName)).toEqual(user.lastName)
 });
 
 When(`User updates Employee ID`, async () => {
-    await expect(await myinfoPage.updateEmployeeId(user.employeeId)).toBeTruthy()
+    await expect(await myinfoPage.updateEmployeeId(user.employeeId)).toEqual(user.employeeId)
 });
 
 When(`User updates Nationality`, async () => {

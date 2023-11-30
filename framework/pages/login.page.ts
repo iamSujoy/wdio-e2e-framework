@@ -21,8 +21,7 @@ class LoginPage extends Page {
             await ElementUtils.click(this.loginButton)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in LoginPage.login()')
         }
     }
 

@@ -1,8 +1,8 @@
 import { $, $$ } from '@wdio/globals'
-import { browser } from '@wdio/globals';
 
 import Page from './page.js';
 import ElementUtils from '../utils/ElementUtils.js'
+import BrowserUtils from '../utils/BrowserUtils.js';
 
 
 class MyInfoPage extends Page {
@@ -24,58 +24,38 @@ class MyInfoPage extends Page {
     public async updateNationality(nationality: string): Promise<boolean> {
         try {
             await ElementUtils.click(this.nationalitySelect)
-            if (nationality === 'IN') {
-                // click 3 times I in keyboard
-                await browser.action('key')
-                    .down('i')
-                    .down('i')
-                    .down('i')
-                    .up('i')
-                    .up('i')
-                    .up('i')
-                    .perform()
-
+            if (nationality.toLowerCase() === 'india') {
+                await BrowserUtils.selectIndia()
             } else {
-                // click 1 times O in keyboard
-                await browser.action('key')
-                    .down('o')
-                    .up('o')
-                    .perform()
+                await BrowserUtils.selectOtherCountry()
             }
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateNationality()')
         }
     }
 
-    public async updateEmployeeId(employeeId: string): Promise<boolean> {
+    public async updateEmployeeId(employeeId: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.employeeIdInput, employeeId)
-            return true
+            return await ElementUtils.setValue(this.employeeIdInput, employeeId)
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateEmployeeId()')
         }
     }
 
-    public async updateLastName(lastName: string): Promise<boolean> {
+    public async updateLastName(lastName: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.lastNameInput, lastName)
-            return true
+            return await ElementUtils.setValue(this.lastNameInput, lastName)
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateLastName()')
         }
     }
 
-    public async updateFirstName(firstName: string): Promise<boolean> {
+    public async updateFirstName(firstName: string): Promise<string | number | undefined> {
         try {
-            await ElementUtils.setValue(this.firstNameInput, firstName)
-            return true
+            return await ElementUtils.setValue(this.firstNameInput, firstName)
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateFirstName()')
         }
     }
 
@@ -85,8 +65,7 @@ class MyInfoPage extends Page {
             await ElementUtils.waitForElementToExist(this.successText)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.save()')
         }
     }
 

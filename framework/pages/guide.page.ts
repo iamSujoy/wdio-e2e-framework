@@ -1,8 +1,7 @@
 import { $$ } from '@wdio/globals'
-import { browser } from '@wdio/globals'
 
 import Page from './page.js';
-import { GUIDE_WINDOW, MAIN_WINDOW } from '../constants/constants.js'
+import BrowserUtils from '../utils/BrowserUtils.js';
 
 class GuidePage extends Page {
 
@@ -10,13 +9,12 @@ class GuidePage extends Page {
 
     public async getTotalGuides(): Promise<number> {
         try {
-            await browser.switchWindow(GUIDE_WINDOW)
-            const n: number = (await this.guides).length
-            await browser.switchWindow(MAIN_WINDOW)
+            await BrowserUtils.switchToGuideTab()
+            const n = (await this.guides).length
+            await BrowserUtils.switchToMainTab()
             return n
         } catch (error) {
-            console.log(error)
-            return -1
+            this.raiseError(error.message ?? 'Error in GuidePage.getTotalGuides()')
         }
     }
 
