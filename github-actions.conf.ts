@@ -38,7 +38,6 @@ export const config: Options.Testrunner = {
     // Patterns to exclude.
     exclude: [
         // 'path/file'
-        // './framework/features/login.feature'
     ],
     //
     // ============
@@ -65,7 +64,10 @@ export const config: Options.Testrunner = {
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: ['headless', 'disable-gpu']
+            args: ['headless', 'disable-gpu'],
+            prefs: {
+                'intl.accept_languages': 'en,EN'
+            }
         }
     }
     ],

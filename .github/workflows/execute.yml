@@ -37,3 +37,8 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         with:
           args: deploy --dir=allure-report --prod
+      - name: Archive Test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-result
+          path: allure-results/
