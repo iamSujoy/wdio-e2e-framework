@@ -20,4 +20,11 @@ export default class Page {
         }
     }
 
+    /**
+     * throw an error with provided custom message
+     */
+    public raiseError(message: string): never {
+        throw new Error(message)
+    }
+
 }

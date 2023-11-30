@@ -14,8 +14,7 @@ class GuidePage extends Page {
             await BrowserUtils.switchToMainTab()
             return n
         } catch (error) {
-            console.log(error)
-            return -1
+            this.raiseError(error.message ?? 'Error in GuidePage.getTotalGuides()')
         }
     }
 

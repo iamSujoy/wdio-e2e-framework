@@ -31,8 +31,7 @@ class MyInfoPage extends Page {
             }
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateNationality()')
         }
     }
 
@@ -40,8 +39,7 @@ class MyInfoPage extends Page {
         try {
             return await ElementUtils.setValue(this.employeeIdInput, employeeId)
         } catch (error) {
-            console.log(error)
-            return undefined
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateEmployeeId()')
         }
     }
 
@@ -49,8 +47,7 @@ class MyInfoPage extends Page {
         try {
             return await ElementUtils.setValue(this.lastNameInput, lastName)
         } catch (error) {
-            console.log(error)
-            return undefined
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateLastName()')
         }
     }
 
@@ -58,8 +55,7 @@ class MyInfoPage extends Page {
         try {
             return await ElementUtils.setValue(this.firstNameInput, firstName)
         } catch (error) {
-            console.log(error)
-            return undefined
+            this.raiseError(error.message ?? 'Error in MyInfoPage.updateFirstName()')
         }
     }
 
@@ -69,8 +65,7 @@ class MyInfoPage extends Page {
             await ElementUtils.waitForElementToExist(this.successText)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in MyInfoPage.save()')
         }
     }
 

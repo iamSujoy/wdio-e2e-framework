@@ -22,8 +22,7 @@ class DashboardPage extends Page {
             await ElementUtils.click(this.logoutButton)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in DashboardPage.logout()')
         }
     }
 
@@ -32,8 +31,7 @@ class DashboardPage extends Page {
             await ElementUtils.click(this.helpButton)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in DashboardPage.logout()')
         }
     }
 
@@ -42,8 +40,7 @@ class DashboardPage extends Page {
             await ElementUtils.click(this.myInfo)
             return true
         } catch (error) {
-            console.log(error)
-            return false
+            this.raiseError(error.message ?? 'Error in DashboardPage.navigateToMyInfo()')
         }
     }
 
