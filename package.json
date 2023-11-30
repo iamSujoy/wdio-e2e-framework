@@ -12,6 +12,8 @@
   },
   "scripts": {
     "wdio": "wdio run ./wdio.conf.ts",
-    "allure": "allure generate allure-results/ --clean && allure open"
+    "wdio:action": "wdio run ./github-actions.conf.ts",
+    "allure": "allure generate allure-results/ --clean && allure open",
+    "report": "allure generate allure-results/ --clean"
   }
 }
