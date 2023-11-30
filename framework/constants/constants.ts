@@ -1,2 +1,2 @@
-export const GUIDE_WINDOW = "starterhelp";
-export const MAIN_WINDOW = "opensource-demo";
+export const GUIDE_WINDOW = "starterhelp.orangehrm.com";
+export const MAIN_WINDOW = "opensource-demo.orangehrmlive.com";

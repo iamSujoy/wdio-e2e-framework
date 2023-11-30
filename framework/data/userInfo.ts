@@ -4,7 +4,7 @@ const User = {
     firstName: "John",
     lastName: "Smith",
     employeeId: "EP12345",
-    nationality: "IN"
+    nationality: "INDIA"
 }
 
 export default User;

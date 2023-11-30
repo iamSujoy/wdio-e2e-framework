@@ -10,10 +10,11 @@ export default class Page {
     * @param path path of the sub page (e.g. /path/to/page.html)
     */
     public async open(path?: string) {
-        let url = browser.options.baseUrl || ''
+        let url = browser.options.baseUrl ?? ''
         if (url) {
             url = path ? `${url}/${path}` : url
-            return browser.url(url)
+            await browser.url(url)
+            await browser.maximizeWindow()
         } else {
             throw Error('Invalid URL !!!')
         }

@@ -1,8 +1,8 @@
 import { $, $$ } from '@wdio/globals'
-import { browser } from '@wdio/globals';
 
 import Page from './page.js';
 import ElementUtils from '../utils/ElementUtils.js'
+import BrowserUtils from '../utils/BrowserUtils.js';
 
 
 class MyInfoPage extends Page {
@@ -24,23 +24,10 @@ class MyInfoPage extends Page {
     public async updateNationality(nationality: string): Promise<boolean> {
         try {
             await ElementUtils.click(this.nationalitySelect)
-            if (nationality === 'IN') {
-                // click 3 times I in keyboard
-                await browser.action('key')
-                    .down('i')
-                    .down('i')
-                    .down('i')
-                    .up('i')
-                    .up('i')
-                    .up('i')
-                    .perform()
-
+            if (nationality.toLowerCase() === 'india') {
+                await BrowserUtils.selectIndia()
             } else {
-                // click 1 times O in keyboard
-                await browser.action('key')
-                    .down('o')
-                    .up('o')
-                    .perform()
+                await BrowserUtils.selectOtherCountry()
             }
             return true
         } catch (error) {

@@ -1,6 +1,5 @@
-import { WaitOptions } from "../types/types";
-import { browser } from '@wdio/globals'
-import { Key } from 'webdriverio'
+import { WaitOptions } from "../types/types.js";
+import BrowserUtils from "./BrowserUtils.js"
 
 export default class ElementUtils {
 
@@ -18,14 +17,7 @@ export default class ElementUtils {
     */
     static async setValue(element: Promise<WebdriverIO.Element>, value: string | number): Promise<string | number> {
         await this.click(element)
-        await browser.action('key')
-            .down(Key.Ctrl)
-            .down('a')
-            .down(Key.Backspace)
-            .up(Key.Backspace)
-            .up('a')
-            .up(Key.Ctrl)
-            .perform()
+        await BrowserUtils.clearValueManually()
         await (await element).setValue(value)
         return await this.getValue(element)
     }
